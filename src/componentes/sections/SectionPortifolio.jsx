@@ -12,7 +12,7 @@ export default function PortfolioSection() {
    const projetos = [
       {
          id: id++,
-         categoria: "landing-page",
+         categoria: "Aura Perfumes",
          titulo: "AURA PERFOMES",
          imagemUrl: test,
          tecnologias: ["HTML", "CSS", "JavaScript"],
@@ -21,7 +21,7 @@ export default function PortfolioSection() {
       },
       {
          id: id++,
-         categoria: "landing-page",
+         categoria: "Clínica Odontólogica",
          titulo: "Clínica Odontológica",
          imagemUrl: clinica,
          tecnologias: ["React", "Tailwind", "Vite"],
@@ -31,7 +31,7 @@ export default function PortfolioSection() {
       ,
       {
          id: id++,
-         categoria: "landing-page",
+         categoria: "Hotel Booking",
          titulo: "Hotel Booking",
          imagemUrl: hotel,
          tecnologias: ["Html", "css", "JavaScript"],
@@ -40,9 +40,19 @@ export default function PortfolioSection() {
       }
    ];
 
+   const categorias = []
+   for (let i = 0; i < projetos.length; i++) {
+      if (!categorias.some(obj => obj == projetos[i].categoria)) {
+         categorias.push(projetos[i].categoria)
+      }
+   }
+
 
    const [filtro, setFiltro] = useState('todos');
    const scrollContainerRef = useRef(null);
+
+   const testy = filtro === 'todos' ? projetos : projetos.filter(p => p.categoria === filtro)
+   
 
 
    // Ativa o gancho de animação automática para a secção do portfólio
@@ -85,7 +95,7 @@ export default function PortfolioSection() {
             {/* Área de Scroll Horizontal dos Projetos */}
             <div className="portfolio-scroll-wrapper" ref={scrollContainerRef}>
                <div className="portfolio-grid-horizontal">
-                  {projetos.map((projeto, index) => (
+                  {testy.map((projeto, index) => (
                      <div
                         key={projeto.id}
                         className="portfolio-card animate-item"

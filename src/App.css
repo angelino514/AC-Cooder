@@ -810,11 +810,6 @@ a {
     padding: 60px 0;
   }
 
-  /* Oculta automaticamente os botões de seta no Mobile */
-  .portfolio-nav-buttons {
-    display: none;
-  }
-
   .portfolio-top-wrapper {
     margin-bottom: 20px;
     padding: 0 16px;
